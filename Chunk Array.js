@@ -5,7 +5,11 @@ var chunk = function (arr, size) {
 
   let newArr = [];
 
-  for (let i = 0; i < arr.length; i++) {}
+  for (let i = 0; i < arr.length; i += size) {
+    newArr.push(arr.slice(i, i + size));
+  }
+
+  return newArr;
 };
 
-console.log(chunk([1, 9, 6, 3, 2], 1));
+console.log(chunk([1, 9, 6, 3, 2], 3));
