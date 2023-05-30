@@ -1,7 +1,17 @@
 const expect = function (val) {
   return {
-    toBe: (x) => (x !== val ? new Error("Not Equal") : true),
-    notToBe: (x) => (x === val ? new Error("Equal") : true),
+    toBe: function (x) {
+      if (x !== val) {
+        throw new Error("Not Equal");
+      }
+      return true;
+    },
+    notToBe: function (x) {
+      if (x === val) {
+        throw new Error("Equal");
+      }
+      return true;
+    },
   };
 };
 

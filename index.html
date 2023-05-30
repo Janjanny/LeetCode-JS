@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="movie-backdrop">
+      <div id="player"></div>
+    </div>
+
+    <script>
+      // Load the YouTube Player API asynchronously
+      const tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // Initialize and create the YouTube player
+      let player;
+      window.onYouTubeIframeAPIReady = function () {
+        player = new YT.Player("player", {
+          videoId: "KydqdKKyGEk", // YouTube video ID
+          playerVars: {
+            autoplay: 1,
+            loop: 1,
+            mute: 1,
+            controls: 0,
+            showinfo: 0,
+            rel: 0,
+            playsinline: 1,
+          },
+          events: {
+            onReady: onPlayerReady,
+          },
+        });
+      };
+
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+    </script>
+  </body>
+</html>
